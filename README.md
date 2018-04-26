@@ -1,6 +1,5 @@
-# **My App Name**
-## hacktiv8Press
-Final Livecode Phase 2..
+# **hacktiv8Press**
+Final Livecode Phase 2, membuat Blog..
 
 ## REST API
 #### List of articles routes:
