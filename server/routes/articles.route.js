@@ -3,18 +3,14 @@ const {
     getArticles, getOneArticle, getByAuthor, getByCategory,
     create, update, deletes
 } = require('../controllers/articles.controller')
+const {loginAuth} = require('../middleware/loginAuth')
 
-router.get('/', function (req, res) {
-    // nanti ganti get all articles
-    res.status(200).send({
-        message: 'Articles'
-    })
-})
-    // .get('/:id', getOneArticle)
-    // .get('/author/:name', getByAuthor)
-    // .get('/category/:name', getByCategory)
-    // .post('/create', create)
-    // .put('/update/:id', update)
-    // .delete('/delete/:id', deletes)
+router.get('/', getArticles)
+    .get('/:id', getOneArticle)
+    .get('/author/:id', getByAuthor)
+    .get('/category/:name', getByCategory)
+    .post('/create', loginAuth, create)
+    .put('/update/:id', loginAuth, update)
+    .delete('/delete/:id', loginAuth, deletes)
 
 module.exports = router

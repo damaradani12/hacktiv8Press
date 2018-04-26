@@ -27,8 +27,8 @@ app.get('/', function (req, res) {
 const users = require('./routes/users.route')
 app.use('/api/users', users)
 
-// const articles = require('./routes/articles.route')
-// app.use('/api/articles', articles)
+const articles = require('./routes/articles.route')
+app.use('/api/articles', articles)
 
 const port = process.env.PORT || 3000
 
