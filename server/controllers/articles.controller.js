@@ -105,8 +105,9 @@ module.exports = {
     let articleId = req.params.id
     let title = req.body.title
     let content = req.body.content
+    let category = req.body.category
 
-    Articles.update( { _id:blog_id } , { $set:{ title, content } } )
+    Articles.update({_id: articleId}, {$set: {title, content, category}})
       .then(result => {
         res.status(200).json({
           message: "Edit Article Success",
@@ -121,6 +122,26 @@ module.exports = {
       })
   },
   deletes: function (req, res) {
+    if (req.params.id) {
+      let articleId = req.params.id
 
+      Articles.remove({_id: articleId})
+        .then(result => {
+          res.status(200).json({
+            message: "Delete Blog Success",
+            result
+          })
+        })
+        .catch(err => {
+          res.status(500).json({
+            message: "error",
+            err
+          })
+        })
+    } else {
+      res.status(406).json({
+        message: "Article Id is undefined"
+      })
+    }
   }
 }
