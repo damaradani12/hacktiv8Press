@@ -5,7 +5,7 @@
           <div class="blog-post">
               <div class="text-right">
                 <div class="btn-group">
-                  <button class="btn btn-default btn-sd" data-toggle="modal" data-target="#editArticleModal">Edit Article</button>
+                  <button class="btn btn-default btn-sd" data-toggle="modal" data-target="#editBlogModal">Edit Article</button>
                   <button class="btn btn-default btn-sd" @click="deleteArticle">Delete Article</button>
                 </div>
               </div>
@@ -15,21 +15,17 @@
           </div>
       </div>
     </div>
-    <ArticleDetail :article="article" />
+    <!-- <EditBlogModal :Blogid="id" :Btitle="title" :Bcontent="content" /> -->
   </main>
 </template>
 
 <script>
 import {mapState} from 'vuex'
 import swal from 'sweetalert'
-import ArticleDetail from '@/components/ArticleDetail.vue'
 
 export default {
   name: 'articleDetail',
   props: ['id'],
-  components: {
-    ArticleDetail
-  },
   data () {
     return {
       article: {}
