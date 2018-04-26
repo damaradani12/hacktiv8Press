@@ -3,28 +3,33 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <!-- <router-link to="/about">About</router-link> | -->
-      <a>Create</a> |
+      <a data-toggle="modal" data-target="#createArticleModal">Create Article</a> |
       <a data-toggle="modal" data-target="#loginModal">Login</a> |
-      <a>Logout</a> |
+      <a @click="logout">Logout</a> |
       <a data-toggle="modal" data-target="#signUpModal">SignUp</a> |
       <a>By Author</a> |
       <a>tag</a>
     </div>
     <LoginModal />
     <sign-up-modal />
+    <CreateArticle />
     <router-view/>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import LoginModal from '@/components/LoginModal.vue'
 import SignUpModal from '@/components/SignUpModal.vue'
+import CreateArticle from '@/components/CreateArticle.vue'
+import swal from 'sweetalert'
 
 export default {
   name: 'app',
   components: {
     LoginModal,
-    SignUpModal
+    SignUpModal,
+    CreateArticle
   },
   methods: {
     logout: function () {
@@ -41,9 +46,7 @@ export default {
             'success'
           ).then(result => {
             localStorage.removeItem('token')
-            this.isLogin = false
-            this.$isLogin = false
-            // window.location.href= "index.html"
+            this.$store.commit('setLogin', '')
             this.$route.push('/')
           })
         }
@@ -57,7 +60,10 @@ export default {
     if (token) {
       this.$store.commit('setLogin', 'true')
     }
-  }
+  },
+  computed: mapState([
+    'isLogin'
+  ])
 }
 </script>
 
@@ -79,7 +85,7 @@ export default {
   cursor: pointer;
 }
 
-#nav a.router-link-exact-active {
+/* #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
