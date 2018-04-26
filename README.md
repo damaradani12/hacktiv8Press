@@ -20,7 +20,6 @@ Final Livecode Phase 2, membuat Blog..
 |/api/users/signin|POST|Create a user|
 |/api/users/signup|POST|Create a user|
 |/api/users/:id|PUT|Update a user with new info|
-|/api/users/:id|DELETE|Delete a user|
 
 ## Usage
 #### Server:
