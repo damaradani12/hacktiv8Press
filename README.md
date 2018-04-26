@@ -7,7 +7,7 @@ Final Livecode Phase 2, membuat Blog..
 |---------|--------|---------------|
 |/api/articles/|GET|Print all articles|
 |/api/articles/:id|GET|Print one article|
-|/api/articles/author/:name|GET|Print articles by author name|
+|/api/articles/author/:id|GET|Print articles by author name|
 |/api/articles/category/:name|GET|Print articles by category|
 |/api/articles/create|POST|Create article|
 |/api/articles/update/:id|PUT|Updated selected articles|
